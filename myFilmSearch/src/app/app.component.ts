@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Http } from '@angular/http';
 import {FilmsService} from './films.service';
 
@@ -9,8 +9,20 @@ import {FilmsService} from './films.service';
 })
 export class AppComponent {
   private films: string[] = [];
+  movie_id = '';
+  movie_title = '';
+  movie_Rating = '';
+  movie_released = '';
+  movie_director = '';
+  movie_actors = '';
+  movie_plot = '';
 
-  constructor(private filmsService: FilmsService, private http: Http) {}
+  constructor(private filmsService: FilmsService, private http: Http) {
+  }
+
+  ngOnInit() {
+
+  }
 
   search(title: string) {
     this.films = this.filmsService.getFilms(title);
@@ -20,16 +32,23 @@ export class AppComponent {
     this.films = this.filmsService.getAllFilms();
   }
 
-  seek(title: String) {
-    this.films = [];
-    let url = 'https://www.googleapis.com/books/v1/volumes?q=inititle:' + title;
-    this.http.get(url).subscribe(
-      response => {
-        for (let film of response.json().items){
-          this.films.push(film.volumeInfo.title);
+  callMovieService() {
+    {
+      this.filmsService.findMovie(this.movie_id).subscribe(
+        response => {
+          this.movie_title = response['Title'];
+          this.movie_Rating = response['Rated'];
+          this.movie_released = response['Released'];
+          this.movie_director = response['Director'];
+          this.movie_actors = response['Actors'];
+          this.movie_plot = response['Plot'];
+        },
+        error => {
+          console.log('Error. The findMovie result JSON value is as follows:');
+          console.log(error);
         }
-      },
-      error => console.error(error)
-    );
+      );
+
+    }
   }
 }
