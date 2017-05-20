@@ -1,11 +1,17 @@
-<h1>
-  Search Films
-</h1>
-
-<input #title type="text">
-<button (click)="seek(title.value); title.value=''">Buscar (logic in a service)</button>
-<br><br>
-
-<button (click)="list()">Listar todas</button>
-
-<p *ngFor="let film of films">{{film}}</p>
+<h2>Open Movie Database</h2>
+<div>
+  <div>
+    <input type="text" required [(ngModel)]="movie_id" (change)="callMovieService()" placeholder="Enter Movie name ...">
+    <br><br>
+    <h3>Movie Details</h3>
+    <br>
+    <p>
+      <i> Title :</i> {{ this.movie_title }} <br>
+      <i> Plot :</i> {{ this.movie_plot }} <br>
+      <i> Actors :</i> {{ this.movie_actors }} <br>
+      <i> Directed by :</i> {{ this.movie_director }} <br>
+      <i> Rated :</i> {{ this.movie_Rating }} <br>
+      <i> Release Date :</i> {{ this.movie_released }} <br>
+    </p>
+  </div>
+</div>
