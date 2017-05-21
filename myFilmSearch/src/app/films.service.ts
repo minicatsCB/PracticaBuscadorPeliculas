@@ -2,22 +2,21 @@
  * Created by Maribel on 19/05/2017.
  */
 import {Injectable} from '@angular/core';
+import { Http } from '@angular/http';
+import {Observable} from 'rxjs/Rx';
+import 'rxjs/add/operator/map';
 
 @Injectable()
 export class FilmsService {
-  private myFilms: string[] = ['Harry Potter', 'Narnia', 'Avatar'];
+  url = 'http://ec2-34-211-5-120.us-west-2.compute.amazonaws.com/?&t=';
 
-  getFilms(key: string) {
-    const out: string[] = [];
-    for (const film of this.myFilms){
-      if (film.includes(key)) {
-        out.push(film);
-      }
-    }
-    return out;
-  }
+  constructor(private http: Http) { }
 
-  getAllFilms() {
-    return this.myFilms;
+  findMovie(movie) {
+    return this.http.get(this.url + movie)
+      .map(response => {
+        {return response.json(); };
+      })
+      .catch(error => Observable.throw(error.json().error));
   }
 }
