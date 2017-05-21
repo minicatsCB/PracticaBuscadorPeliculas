@@ -25,7 +25,6 @@ export class AppComponent implements OnInit {
 
   callMovieService(movie_id: string) {
     {
-      console.log(movie_id);
       this.filmsService.findMovie(movie_id).subscribe(
         response => {
           this.moviePoster = response['Poster']
