@@ -1,40 +1,49 @@
-<form (ngSubmit)="callMovieService(movie_id.value)">
-  <ion-item>
-    <ion-label>Movie</ion-label>
-    <ion-input #movie_id type="text" ng-model="movie_id"></ion-input>
-  </ion-item>
-  <button ion-button type="submit">Search</button>
-</form>
+<html>
+  <head>
+    <title>myIonicFilmSearch</title>
+  </head>
+  <body>
+    <ion-content>
+      <form (ngSubmit)="callMovieService(movie_id.value)">
+        <ion-item>
+          <ion-label>Enter movie name:</ion-label>
+          <ion-input #movie_id type="text" ng-model="movie_id"></ion-input>
+        </ion-item>
+        <button ion-button type="submit">Search</button>
+      </form>
 
-<ion-card>
-  <img [src]="moviePoster"/>
-  <ion-card-content>
-    <ion-card-title>{{ movieTitle }}</ion-card-title>
-    <p>{{ moviePlot }}</p>
-    <ion-list>
-      <button ion-item>
-        <ion-icon name="year" item-left></ion-icon>
-        Year
-        <p>{{ movieYear }}</p>
-      </button>
+      <ion-card>
+        <img [src]="moviePoster"/>
+        <ion-card-content>
+          <ion-card-title>{{ movieTitle }}</ion-card-title>
+          <p>{{ moviePlot }}</p>
+          <ion-list>
+            <button ion-item>
+              <img src="../assets/icon/calendar-48.png" item-left style="width: 24px; height: 24px"/>
+              Year
+              <p>{{ movieYear }}</p>
+            </button>
 
-      <button ion-item>
-        <ion-icon name="director" item-left></ion-icon>
-        Director
-        <p>{{ movieDirector }}</p>
-      </button>
+            <button ion-item>
+              <img src="../assets/icon/director-chair-48.png" item-left style="width: 24px; height: 24px"/>
+              Director
+              <p>{{ movieDirector }}</p>
+            </button>
 
-      <button ion-item>
-        <ion-icon name="actors" item-left></ion-icon>
-        Actors
-        <p>{{ movieActors }}</p>
-      </button>
+            <button ion-item>
+              <img src="../assets/icon/actor-48.png" item-left style="width: 32px; height: 32px"/>
+              Actors
+              <p>{{ movieActors }}</p>
+            </button>
 
-      <button ion-item>
-        <ion-icon name="imdbRating" item-left></ion-icon>
-        IMDB Rating
-        <p>{{ movieImdbRating }}</p>
-      </button>
-    </ion-list>
-  </ion-card-content>
-</ion-card>
+            <button ion-item>
+              <img src="../assets/icon/rating-48.png" item-left style="width: 24px; height: 24px"/>
+              IMDB Rating
+              <p>{{ movieImdbRating }}</p>
+            </button>
+          </ion-list>
+        </ion-card-content>
+      </ion-card>
+    </ion-content>
+  </body>
+</html>
