@@ -12,35 +12,35 @@
         <button ion-button type="submit">Search</button>
       </form>
 
-      <ion-card>
+      <ion-card *ngIf="movieYear">
         <img [src]="moviePoster"/>
         <ion-card-content>
-          <ion-card-title>{{ movieTitle }}</ion-card-title>
+          <ion-card-title text-wrap>{{ movieTitle }}</ion-card-title>
           <p>{{ moviePlot }}</p>
           <ion-list>
-            <button ion-item>
-              <img src="../assets/icon/calendar-48.png" item-left style="width: 24px; height: 24px"/>
-              Year
+            <ion-item text-wrap>
+              <img src="./assets/icon/calendar-48.png" item-left style="width: 24px; height: 24px"/>
+
               <p>{{ movieYear }}</p>
-            </button>
+            </ion-item>
 
-            <button ion-item>
-              <img src="../assets/icon/director-chair-48.png" item-left style="width: 24px; height: 24px"/>
-              Director
+            <ion-item text-wrap>
+              <img src="./assets/icon/director-chair-48.png" item-left style="width: 24px; height: 24px"/>
+
               <p>{{ movieDirector }}</p>
-            </button>
+            </ion-item>
 
-            <button ion-item>
-              <img src="../assets/icon/actor-48.png" item-left style="width: 32px; height: 32px"/>
-              Actors
+            <ion-item text-wrap>
+              <img src="./assets/icon/actor-48.png" item-left style="width: 32px; height: 32px"/>
+
               <p>{{ movieActors }}</p>
-            </button>
+            </ion-item>
 
-            <button ion-item>
-              <img src="../assets/icon/rating-48.png" item-left style="width: 24px; height: 24px"/>
-              IMDB Rating
+            <ion-item text-wrap>
+              <img src="./assets/icon/rating-48.png" item-left style="width: 24px; height: 24px"/>
+
               <p>{{ movieImdbRating }}</p>
-            </button>
+            </ion-item>
           </ion-list>
         </ion-card-content>
       </ion-card>
