@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { Observable } from 'rxjs/Rx';
 import 'rxjs/add/operator/map';
 import {FilmsService} from "./films.service";
 import {Http} from "@angular/http";
